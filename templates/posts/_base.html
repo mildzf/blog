@@ -1,0 +1,31 @@
+{% extends "_base.html" %}
+
+
+{% block content %}
+    {% if is_paginated %}
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+            {% if previous_page_url %}
+            <li class="page-item">
+              <a class="page-link" href="{{ previous_page_url }}">&larr; Newer</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="{{ previous_page_url }}">&larr; Newer</a>
+              </li>
+            {% endif %}
+            <li class="page-item disabled">
+              <a class="page-link" href="">{{ posts.number }} of {{ paginator.num_pages }}</a>
+            </li>
+            {% if next_page_url %}
+            <li class="page-item">
+              <a class="page-link" href="{{ next_page_url }}">Older &rarr;</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" href="{{ next_page_url }}">Older &rarr;</a>
+            </li>
+            {% endif %}
+        </ul>
+    {% endif %}
+{% endblock content %}

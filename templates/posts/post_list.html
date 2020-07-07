@@ -1,0 +1,16 @@
+{% extends "posts/_base.html" %}
+
+{% block title %}
+Latest Posts - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    {% for post in posts  %}
+     <p>
+        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.content|truncatewords_html:80 }} </p>
+     </p>
+    {% empty %}
+    <p> No posts to display </p>
+    {% endfor %}
+{% endblock content %}

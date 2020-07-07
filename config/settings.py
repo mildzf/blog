@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # Local
     'users',
     'pages',
+    'posts.apps.PostsConfig',
 ]
 
 # MIDDLEWARE
