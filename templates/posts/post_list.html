@@ -5,11 +5,18 @@ Latest Posts - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
+
     {% for post in posts  %}
-     <p>
-        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.content|truncatewords_html:80 }} </p>
-     </p>
+    <div class="card" style="">
+        {% if post.image %}
+        <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap">
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content|truncatewords_html:40 }}</p>
+            <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read more...</a>
+        </div>
+    </div>
     {% empty %}
     <p> No posts to display </p>
     {% endfor %}

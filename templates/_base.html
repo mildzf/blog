@@ -19,15 +19,14 @@
 </head>
 
 <body>
-  <main role="main">
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-      <h5 class="my-0 mr-md-auto font-weight-normal">
-        <a href="{% url 'home' %}">Mylo's Blog</a>
-      </h5>
-    </div>
-  </main>
 
-  <div class="container">
+  <div class="jumbotron">
+    <div class="container">
+    <h1>Mylo's Blog</h1>
+    <p>My piece of the web.</p>
+    </div>
+  </div>
+  <div class="container-">
     {% block content %}
       <p>Default content...</p>
     {% endblock content %}
@@ -35,7 +34,7 @@
 
   <footer class="footer">
     <div class="container">
-      <span class="text-muted">Footer...</span>
+      <span class="text-muted">&copy; copyright mylo 2020</span>
     </div>
   </footer>
 

@@ -25,6 +25,7 @@ class Post(models.Model):
     pub_date = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, related_name='posts',on_delete=models.CASCADE)
     published = models.BooleanField(default=True)
+    objects = PostManager()
 
     class Meta:
         ordering = ['-pub_date', '-updated', '-created']
@@ -41,8 +42,25 @@ class Post(models.Model):
         return reverse('posts:detail', kwargs={'slug': self.slug})
 
     def is_published(self):
-        if self.pub_date > timezone.now():
-            self.published=False
-            self.save()
         return self.published
     is_published.boolean = True
+
+    def is_future(self):
+        if self.pub_date > timezone.now():
+            return True
+        return False
+    is_future.boolean=True
+
+
+class Tag(models.Model): 
+    slug = models.SlugField(max_length=55)
+    posts = models.ManyToManyField('Post', related_name='tags')
+
+    class Meta:
+        ordering = ['slug']
+
+    def __str__(self):
+        return self.slug 
+    
+    def get_absolute_url(self):
+        return reverse('tag_detail', kwargs={'slug': self.slug})

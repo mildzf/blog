@@ -1,0 +1,19 @@
+{% extends "posts/_base.html" %}
+
+{% block title %}
+    Posts tagged: {{ tag }} - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    {% for post in posts  %}
+     <article>
+        <header>
+        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+        </header>
+        <p>{{ post.content|truncatewords_html:80 }} </p>
+        <footer> <a href="{{ post.get_absolute_url }}">Read more...</a></footer>
+     </article>
+    {% empty %}
+    <p> No posts to display </p>
+    {% endfor %}
+{% endblock content %}
