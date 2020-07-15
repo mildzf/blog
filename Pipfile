@@ -13,6 +13,9 @@ django-debug-toolbar = "==2.2"
 whitenoise = "==5.0.1"
 pillow = "*"
 django-pagedown = "*"
+pytest = "*"
+factory-boy = "*"
+pytest-django = "*"
 
 [requires]
 python_version = "3.7"

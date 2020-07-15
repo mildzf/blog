@@ -5,7 +5,7 @@
 {% endblock title %}
 
 {% block content %}
-    {% for post in posts  %}
+    {% for post in tag.posts.all  %}
      <article>
         <header>
         <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
@@ -16,4 +16,5 @@
     {% empty %}
     <p> No posts to display </p>
     {% endfor %}
+    {{ block.super }}
 {% endblock content %}

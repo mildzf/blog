@@ -6,7 +6,7 @@ from .views import PostDetailView, PostListView, TagDetailView
 app_name="posts"
 
 urlpatterns = [
-    path('', PostListView.as_view(), name="home"),
+    path('', PostListView.as_view(), name="list"),
     path('<slug:slug>/', PostDetailView.as_view(), name="detail"),
     path('tag/<slug:slug>/', TagDetailView.as_view(), name='tag_detail'),
 ]

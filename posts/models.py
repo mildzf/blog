@@ -29,6 +29,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-pub_date', '-updated', '-created']
+
     def __str__(self):
         return self.title 
 
@@ -63,4 +64,4 @@ class Tag(models.Model):
         return self.slug 
     
     def get_absolute_url(self):
-        return reverse('tag_detail', kwargs={'slug': self.slug})
+        return reverse('posts:tag_detail', kwargs={'slug': self.slug})

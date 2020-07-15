@@ -20,7 +20,7 @@ class PostListView(PageLinksMixin, ListView):
 
 class TagDetailView(SingleObjectMixin, PageLinksMixin, ListView):
     paginate_by = 5
-    context_object_name = "posts"
+    template_name = "posts/tag_detail.html"
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object(queryset=Tag.objects.all())
@@ -34,4 +34,4 @@ class TagDetailView(SingleObjectMixin, PageLinksMixin, ListView):
     def get_queryset(self):
         return self.object.posts.all()
 
-        
+
